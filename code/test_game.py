@@ -1,5 +1,5 @@
 import pyglet
-from modules import load, resources, object, mainobject
+from modules import load,resources , object, mainobject
 
 screen_width = 800
 screen_height = 600
@@ -28,6 +28,8 @@ def update(delta):
     global game_objects
 
     game_time += delta
+
+    #print("game time, %f" %game_time)
     for obj in game_objects:
         obj.update(delta)
     for gray_bubble in gray_bubbles:
@@ -41,10 +43,9 @@ def update(delta):
 
 @game_window.event
 def on_draw():
-	game_window.clear()
-	main_batch.draw()
-		
+    game_window.clear()
+    main_batch.draw()
 
 if __name__ == '__main__':
-	pyglet.clock.schedule_interval(update, 1/240.0)
-	pyglet.app.run()
+    pyglet.clock.schedule_interval(update, 1/240.0)
+    pyglet.app.run()
