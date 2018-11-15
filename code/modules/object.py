@@ -15,11 +15,9 @@ class Object(pyglet.sprite.Sprite):
         max_x = self.win.width
         max_y = self.win.height
         if self.y < min_y:
-            self.y = max_y
+            self.y = max_y+100
             self.x = random.randint(0, 800)
             self.velocity_y = random.uniform(-5.0, -1.0)
-        elif self.y > max_y:
-            self.y = min_y
 
     def update(self, delta):
         #super(Object, self).update(delta)
