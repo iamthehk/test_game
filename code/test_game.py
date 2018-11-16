@@ -39,7 +39,7 @@ def update(delta):
 
     game_time += delta
 
-    #print("game time, %f" %game_time)
+    print("game time, %f" %game_time)
     for obj in game_objects:
         obj.update(delta)
     for gray_bubble in gray_bubbles:
@@ -57,5 +57,5 @@ def on_draw():
     main_batch.draw()
 
 if __name__ == '__main__':
-    pyglet.clock.schedule_interval(update, 1/60.0)
+    pyglet.clock.schedule_interval(update, 1/120.0)
     pyglet.app.run()

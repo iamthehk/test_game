@@ -17,7 +17,7 @@ def grayBubbles(window, num_bubbles, player_position, batch=None):
         new_bubble = object.Object(window, img=resources.gray_bubble,
                             x=bubble_x, y=bubble_y,
                             batch=batch)
-        new_bubble.velocity_y = random.uniform(-5.0, -1.0)
+        new_bubble.velocity_y = random.uniform(-200.0, -100.0)
 
         bubbles.append(new_bubble)
     return bubbles
@@ -29,7 +29,7 @@ def addGrayBubbles(window, bubbles, number_bubble_to_add, batch=None):
         new_bubble = object.Object(window, img=resources.gray_bubble,
                             x=bubble_x, y=bubble_y,
                             batch=batch)
-        new_bubble.velocity_y = random.uniform(-5.0, -1.0)
+        new_bubble.velocity_y = random.uniform(-200.0, -100.0)
 
         bubbles.append(new_bubble)
     return bubbles
