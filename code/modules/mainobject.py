@@ -10,7 +10,9 @@ class MainObject(pyglet.sprite.Sprite):
 
     def __init__(self, window, *args, **kwargs):
         super(MainObject, self).__init__(*args, **kwargs)
-        self.velocity_x, self.velocity_y = 250.0, 250.0
+        self.velocity_x, self.velocity_y = window.width//2.0, 0.0
+        self.gravity = window.height//10.0
+        self.jumping = False
         self.keys = dict(left=False, right=False, up=False, down=False)
         self.win = window
 
@@ -35,7 +37,7 @@ class MainObject(pyglet.sprite.Sprite):
 
     def check_bounds(self):
         min_x = 0
-        min_y = 0
+        min_y = self.win.height / 20
         max_x = self.win.width
         max_y = self.win.height
         if self.x < min_x:
@@ -44,6 +46,9 @@ class MainObject(pyglet.sprite.Sprite):
             self.x = max_x
         if self.y < min_y:
             self.y = min_y
+            if self.keys['up'] == False:
+                self.jumping = False
+                self.velocity_y = 0.0
         elif self.y > max_y:
             self.y = max_y
 
@@ -52,9 +57,9 @@ class MainObject(pyglet.sprite.Sprite):
         actual_distance = load.distance(self.position, other_object.position)
         return (actual_distance <= collision_distance)
 
-    def on_mouse_motion(self, x, y, dx, dy):
-        self.x = x
-        self.y = y
+    #def on_mouse_motion(self, x, y, dx, dy):
+    #    #self.x = x
+    #    #self.y = y
 
     def update(self, delta):
         #super(MainObject, self).update(delta)
@@ -63,8 +68,11 @@ class MainObject(pyglet.sprite.Sprite):
         if self.keys['right']:
             self.x += self.velocity_x * delta
         if self.keys['up']:
+            if self.jumping == False:
+                self.jumping = True
+                self.velocity_y = self.win.height * 1.5
+        if self.jumping:
+            self.velocity_y -= self.gravity
             self.y += self.velocity_y * delta
-        if self.keys['down']:
-            self.y -= self.velocity_y * delta
         self.check_bounds()
 

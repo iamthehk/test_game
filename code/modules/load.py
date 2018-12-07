@@ -12,24 +12,24 @@ def grayBubbles(window, num_bubbles, player_position, batch=None):
     bubbles = []
     for i in range(num_bubbles):
         bubble_x, bubble_y = player_position
-        bubble_x = random.randint(0, 800)
-        bubble_y = 700
+        bubble_x = random.randint(0, window.width)
+        bubble_y = window.height * 1.2
         new_bubble = object.Object(window, img=resources.gray_bubble,
                             x=bubble_x, y=bubble_y,
                             batch=batch)
-        new_bubble.velocity_y = random.uniform(-200.0, -100.0)
+        #new_bubble.velocity_y = random.uniform((window.height/5), (window.height/3))
 
         bubbles.append(new_bubble)
     return bubbles
 
 def addGrayBubbles(window, bubbles, number_bubble_to_add, batch=None):
     for i in range(number_bubble_to_add):
-        bubble_x = random.randint(0, 800)
-        bubble_y = 700
+        bubble_x = random.randint(0, window.width)
+        bubble_y = window.height * 1.2
         new_bubble = object.Object(window, img=resources.gray_bubble,
                             x=bubble_x, y=bubble_y,
                             batch=batch)
-        new_bubble.velocity_y = random.uniform(-200.0, -100.0)
+        #new_bubble.velocity_y = random.uniform((window.height/5), (window.height/3))
 
         bubbles.append(new_bubble)
     return bubbles
