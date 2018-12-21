@@ -58,5 +58,5 @@ def on_draw():
     main_batch.draw()
 
 if __name__ == '__main__':
-    pyglet.clock.schedule_interval(update, 1/120.0)
+    pyglet.clock.schedule_interval(update, 1/240.0)
     pyglet.app.run()
